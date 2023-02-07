@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.DecimalFormat;
 
@@ -66,16 +67,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private double calculateBmi() {
-        String userFeetText = feetText.getText().toString();
-        String userInchesText = inchesText.getText().toString();
+        String userMeterText = feetText.getText().toString();
+        String userCentimeterText = inchesText.getText().toString();
         String userWeightText = weightText.getText().toString();
 
-        int feet = Integer.parseInt(userFeetText);
-        int inches = Integer.parseInt(userInchesText);
+        double meter = Integer.parseInt(userMeterText);
+        double centimeter = Integer.parseInt(userCentimeterText);
         int weight = Integer.parseInt(userWeightText);
 
-        int totalInches = (feet * 12) + inches;
-        double heightInMeters = totalInches * 0.0254;
+        double heightInMeters = (meter + (centimeter/100));
+//        Toast.makeText(this, String.valueOf(heightInMeters), Toast.LENGTH_LONG).show();
         return weight / (heightInMeters * heightInMeters);
     }
 
@@ -86,11 +87,11 @@ public class MainActivity extends AppCompatActivity {
         String result;
 
         if (bmi < 18.5) {
-            result = bmiTextResult + " - You are underweight";
+            result = "BMI: " + bmiTextResult + "\nYou are underweight";
         }else if(bmi > 25) {
-            result = bmiTextResult + " - You are overweight";
+            result = "BMI: " + bmiTextResult + "\nYou are overweight";
         }else {
-            result = bmiTextResult + " - You are a healthy weight";
+            result = "BMI: " + bmiTextResult + "\nYou are a healthy weight";
         }
         resultText.setText(result);
     }
