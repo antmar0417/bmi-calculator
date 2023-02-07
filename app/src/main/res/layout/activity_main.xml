@@ -102,5 +102,5 @@
         android:layout_centerHorizontal="true"
         android:textColor="#000000"
         android:background="@drawable/border_radius"
-        android:text="Result...." />
+        android:text="Result..." />
 </LinearLayout>
