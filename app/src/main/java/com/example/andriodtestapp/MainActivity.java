@@ -103,11 +103,11 @@ public class MainActivity extends AppCompatActivity {
         String result;
 
         if (maleButton.isChecked()) {
-            result = bmiTextResult + " - As you are under 18, please consult with your doctor for the healthy range for boys";
+            result = "BMI: " + bmiTextResult + "\nAs you are under 18, please consult with your doctor for the healthy range for boys";
         }else if(femaleButton.isChecked()) {
-            result = bmiTextResult + " - As you are under 18, please consult with your doctor for the healthy range for girls";
+            result = "BMI: " + bmiTextResult + "\nAs you are under 18, please consult with your doctor for the healthy range for girls";
         }else {
-            result = bmiTextResult + " - As you are under 18, please consult with your doctor for the healthy range";
+            result = "BMI: " + bmiTextResult + "\nAs you are under 18, please consult with your doctor for the healthy range";
         }
         resultText.setText(result);
     }
