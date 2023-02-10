@@ -1,8 +1,12 @@
 package com.example.andriodtestapp;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Color;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -40,30 +44,50 @@ public class MainActivity extends AppCompatActivity {
         weightText = findViewById(R.id.edit_text_weight);
         calculateButton = findViewById(R.id.button_calculate);
         resultText = findViewById(R.id.text_view_result);
-
-//        resultText.setText("Changed text");
-
-//        String alertText = "Hello there";
-//        Toast.makeText(this, alertText, Toast.LENGTH_LONG).show();
     }
 
     private void setupButtonClickListener() {
         calculateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                String alertText = "You clicked calculate";
-//                Toast.makeText(MainActivity.this, alertText, Toast.LENGTH_LONG).show();
+                String userInfoText = checkIfFieldIsEmpty();
+                if (userInfoText == null) return;
 
-                String userAgeText = ageText.getText().toString();
-                int age = Integer.parseInt(userAgeText);
+                int age = Integer.parseInt(userInfoText);
 
                 if (age >= 18) {
-                displayBmiResult(calculateBmi());
-                }else {
+                    displayBmiResult(calculateBmi());
+                } else {
                     displayGuidance(calculateBmi());
                 }
             }
         });
+    }
+
+    @Nullable
+    private String checkIfFieldIsEmpty() {
+        String userInfoText = ageText.getText().toString();
+        String userMeterText = feetText.getText().toString();
+        String userCentimeterText = inchesText.getText().toString();
+        String userWeightText = weightText.getText().toString();
+
+        if (TextUtils.isEmpty(userInfoText)) {
+            Toast.makeText(MainActivity.this, "Please fill out your age", Toast.LENGTH_LONG).show();
+            return null;
+        }
+        if (TextUtils.isEmpty(userMeterText)) {
+            Toast.makeText(MainActivity.this, "Please fill out the meter", Toast.LENGTH_LONG).show();
+            return null;
+        }
+        if (TextUtils.isEmpty(userCentimeterText)) {
+            Toast.makeText(MainActivity.this, "Please fill out the centimeter", Toast.LENGTH_LONG).show();
+            return null;
+        }
+        if (TextUtils.isEmpty(userWeightText)) {
+            Toast.makeText(MainActivity.this, "Please fill out your weight", Toast.LENGTH_LONG).show();
+            return null;
+        }
+        return userInfoText;
     }
 
     private double calculateBmi() {
@@ -75,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
         double centimeter = Integer.parseInt(userCentimeterText);
         int weight = Integer.parseInt(userWeightText);
 
-        double heightInMeters = (meter + (centimeter/100));
+        double heightInMeters = (meter + (centimeter / 100));
 //        Toast.makeText(this, String.valueOf(heightInMeters), Toast.LENGTH_LONG).show();
         return weight / (heightInMeters * heightInMeters);
     }
@@ -88,9 +112,9 @@ public class MainActivity extends AppCompatActivity {
 
         if (bmi < 18.5) {
             result = "BMI: " + bmiTextResult + "\nYou are underweight";
-        }else if(bmi > 25) {
+        } else if (bmi > 25) {
             result = "BMI: " + bmiTextResult + "\nYou are overweight";
-        }else {
+        } else {
             result = "BMI: " + bmiTextResult + "\nYou are a healthy weight";
         }
         resultText.setText(result);
@@ -104,9 +128,9 @@ public class MainActivity extends AppCompatActivity {
 
         if (maleButton.isChecked()) {
             result = "BMI: " + bmiTextResult + "\nAs you are under 18, please consult with your doctor for the healthy range for boys";
-        }else if(femaleButton.isChecked()) {
+        } else if (femaleButton.isChecked()) {
             result = "BMI: " + bmiTextResult + "\nAs you are under 18, please consult with your doctor for the healthy range for girls";
-        }else {
+        } else {
             result = "BMI: " + bmiTextResult + "\nAs you are under 18, please consult with your doctor for the healthy range";
         }
         resultText.setText(result);
