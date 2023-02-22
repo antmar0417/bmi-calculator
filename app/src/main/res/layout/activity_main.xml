@@ -1,122 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center_horizontal">
+    android:fadeScrollbars="true"
+    android:scrollbars="vertical">
 
-    <ScrollView
-        android:scrollbars="vertical"
-        android:fadeScrollbars="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="290dp"
+            android:layout_height="170dp"
+            android:layout_marginTop="24dp"
+            app:cardCornerRadius="8dp">
+
+            <ImageView
+                android:id="@+id/roundedImageView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:scaleType="centerCrop"
+                android:src="@drawable/weight_loss_image" />
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="24dp"
+            android:text="BMI Calculator" />
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/radio_button_male"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Male" />
+
+            <RadioButton
+                android:id="@+id/radio_button_female"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Female" />
+        </RadioGroup>
+
+        <EditText
+            android:id="@+id/edit_text_age"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:hint="Age"
+            android:inputType="number" />
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center_horizontal"
-            android:orientation="vertical">
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="290dp"
-                android:layout_height="170dp"
-                android:layout_marginTop="24dp"
-                app:cardCornerRadius="8dp">
-
-                <ImageView
-                    android:id="@+id/roundedImageView"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@color/white"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/weight_loss_image" />
-            </androidx.cardview.widget.CardView>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:layout_marginBottom="24dp"
-                android:text="BMI Calculator" />
-
-            <RadioGroup
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="24dp"
-                android:orientation="horizontal">
-
-                <RadioButton
-                    android:id="@+id/radio_button_male"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Male" />
-
-                <RadioButton
-                    android:id="@+id/radio_button_female"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Female" />
-            </RadioGroup>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:orientation="horizontal">
 
             <EditText
-                android:id="@+id/edit_text_age"
-                android:layout_width="wrap_content"
+                android:id="@+id/edit_text_feet"
+                android:layout_width="75dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="24dp"
-                android:hint="Age"
-                android:inputType="number" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="24dp"
-                android:orientation="horizontal">
-
-                <EditText
-                    android:id="@+id/edit_text_feet"
-                    android:layout_width="75dp"
-                    android:layout_height="wrap_content"
-                    android:hint="Meter"
-                    android:inputType="number"
-                    android:textAlignment="center" />
-
-                <EditText
-                    android:id="@+id/edit_text_inches"
-                    android:layout_width="75dp"
-                    android:layout_height="wrap_content"
-                    android:hint="Cm"
-                    android:inputType="number"
-                    android:textAlignment="center" />
-            </LinearLayout>
+                android:hint="Meter"
+                android:inputType="number"
+                android:textAlignment="center" />
 
             <EditText
-                android:id="@+id/edit_text_weight"
-                android:layout_width="wrap_content"
+                android:id="@+id/edit_text_inches"
+                android:layout_width="75dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="24dp"
-                android:hint="Weight(kg)"
-                android:inputType="number" />
-
-            <Button
-                android:id="@+id/button_calculate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="24dp"
-                app:backgroundTint="@android:color/holo_blue_bright"
-                android:textColor="@android:color/white"
-                android:text="Calculate" />
-<!--                android:theme="@style/CardView.Dark"-->
-
-            <TextView
-                android:id="@+id/text_view_result"
-                android:layout_width="290dp"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:background="@drawable/border_radius"
-                android:minHeight="100dp"
-                android:padding="10dp"
-                android:text="Result..." />
+                android:hint="Cm"
+                android:inputType="number"
+                android:textAlignment="center" />
         </LinearLayout>
-    </ScrollView>
-</LinearLayout>
+
+        <EditText
+            android:id="@+id/edit_text_weight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:hint="Weight(kg)"
+            android:inputType="number" />
+
+        <Button
+            android:id="@+id/button_calculate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:text="Calculate"
+            android:textColor="@android:color/white"
+            app:backgroundTint="@android:color/holo_blue_bright" />
+        <!--                android:theme="@style/CardView.Dark"-->
+
+        <TextView
+            android:id="@+id/text_view_result"
+            android:layout_width="290dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/border_radius"
+            android:minHeight="100dp"
+            android:padding="10dp"
+            android:text="Result..." />
+    </LinearLayout>
+</ScrollView>
