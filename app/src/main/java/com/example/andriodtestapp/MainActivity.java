@@ -76,11 +76,11 @@ public class MainActivity extends AppCompatActivity {
             return null;
         }
         if (TextUtils.isEmpty(userMeterText)) {
-            Toast.makeText(MainActivity.this, "Please fill out the meter", Toast.LENGTH_LONG).show();
+            Toast.makeText(MainActivity.this, "Please fill out the meter field", Toast.LENGTH_LONG).show();
             return null;
         }
         if (TextUtils.isEmpty(userCentimeterText)) {
-            Toast.makeText(MainActivity.this, "Please fill out the centimeter", Toast.LENGTH_LONG).show();
+            Toast.makeText(MainActivity.this, "Please fill out the centimeter field", Toast.LENGTH_LONG).show();
             return null;
         }
         if (TextUtils.isEmpty(userWeightText)) {
