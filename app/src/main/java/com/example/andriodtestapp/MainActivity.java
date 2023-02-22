@@ -3,10 +3,8 @@ package com.example.andriodtestapp;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,8 +18,8 @@ public class MainActivity extends AppCompatActivity {
     private RadioButton maleButton;
     private RadioButton femaleButton;
     private EditText ageText;
-    private EditText feetText;
-    private EditText inchesText;
+    private EditText metersText;
+    private EditText centimetersText;
     private EditText weightText;
     private Button calculateButton;
     private TextView resultText;
@@ -39,8 +37,8 @@ public class MainActivity extends AppCompatActivity {
         maleButton = findViewById(R.id.radio_button_male);
         femaleButton = findViewById(R.id.radio_button_female);
         ageText = findViewById(R.id.edit_text_age);
-        feetText = findViewById(R.id.edit_text_feet);
-        inchesText = findViewById(R.id.edit_text_inches);
+        metersText = findViewById(R.id.edit_text_feet);
+        centimetersText = findViewById(R.id.edit_text_inches);
         weightText = findViewById(R.id.edit_text_weight);
         calculateButton = findViewById(R.id.button_calculate);
         resultText = findViewById(R.id.text_view_result);
@@ -67,8 +65,8 @@ public class MainActivity extends AppCompatActivity {
     @Nullable
     private String checkIfFieldIsEmpty() {
         String userInfoText = ageText.getText().toString();
-        String userMeterText = feetText.getText().toString();
-        String userCentimeterText = inchesText.getText().toString();
+        String userMeterText = metersText.getText().toString();
+        String userCentimeterText = centimetersText.getText().toString();
         String userWeightText = weightText.getText().toString();
 
         if (TextUtils.isEmpty(userInfoText)) {
@@ -91,12 +89,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private double calculateBmi() {
-        String userMeterText = feetText.getText().toString();
-        String userCentimeterText = inchesText.getText().toString();
+        String userMeterText = metersText.getText().toString();
+        String userCentimeterText = centimetersText.getText().toString();
         String userWeightText = weightText.getText().toString();
 
-        double meter = Integer.parseInt(userMeterText);
-        double centimeter = Integer.parseInt(userCentimeterText);
+        double meter = Double.parseDouble(userMeterText);
+        double centimeter = Double.parseDouble(userCentimeterText);
         int weight = Integer.parseInt(userWeightText);
 
         double heightInMeters = (meter + (centimeter / 100));
