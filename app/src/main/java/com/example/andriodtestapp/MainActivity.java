@@ -64,12 +64,12 @@ public class MainActivity extends AppCompatActivity {
 
     @Nullable
     private String checkIfFieldIsEmpty() {
-        String userInfoText = ageText.getText().toString();
+        String userAgeText = ageText.getText().toString();
         String userMeterText = metersText.getText().toString();
         String userCentimeterText = centimetersText.getText().toString();
         String userWeightText = weightText.getText().toString();
 
-        if (TextUtils.isEmpty(userInfoText)) {
+        if (TextUtils.isEmpty(userAgeText)) {
             Toast.makeText(MainActivity.this, "Please fill out your age", Toast.LENGTH_LONG).show();
             return null;
         }
@@ -85,7 +85,38 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(MainActivity.this, "Please fill out your weight", Toast.LENGTH_LONG).show();
             return null;
         }
-        return userInfoText;
+
+        int age = Integer.parseInt(userAgeText);
+        int meter = Integer.parseInt(userMeterText);
+        int centimeter = Integer.parseInt(userCentimeterText);
+        int weight = Integer.parseInt(userWeightText);
+        int metersAndCentimeters = meter * 100 + centimeter;
+
+        if (age > 120){
+            Toast.makeText(MainActivity.this, "Are you really" + age + " old?", Toast.LENGTH_LONG).show();
+            return null;
+        }
+        if (centimeter > 99){
+            Toast.makeText(MainActivity.this, "Centimeters cannot be bigger than 99!", Toast.LENGTH_LONG).show();
+            return null;
+        }
+        if (metersAndCentimeters > 210 && metersAndCentimeters <=240){
+            resultText.setText("As you're " + meter + "," + centimeter + "m long, please consult with your doctor for the healthy range.");
+            return null;
+        }
+        if (metersAndCentimeters > 240){
+            Toast.makeText(MainActivity.this, "Are you really " + meter + "," + centimeter + "m high, long?", Toast.LENGTH_LONG).show();
+            return null;
+        }
+        if (weight >= 200 && weight < 300){
+            resultText.setText("As you're " + weight + "kg, please consult with your doctor for the healthy range.");
+            return null;
+        }
+        if (weight >= 300){
+            Toast.makeText(MainActivity.this, "Are you really " + weight + "kg?", Toast.LENGTH_LONG).show();
+            return null;
+        }
+        return userAgeText;
     }
 
     private double calculateBmi() {
@@ -98,7 +129,6 @@ public class MainActivity extends AppCompatActivity {
         int weight = Integer.parseInt(userWeightText);
 
         double heightInMeters = (meter + (centimeter / 100));
-//        Toast.makeText(this, String.valueOf(heightInMeters), Toast.LENGTH_LONG).show();
         return weight / (heightInMeters * heightInMeters);
     }
 
