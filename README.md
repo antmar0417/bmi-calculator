@@ -2,4 +2,4 @@
 
 # BMI calculator
 
-That is a simple BMI Calculator.
+This is a simple BMI Calculator android app created with Java.
