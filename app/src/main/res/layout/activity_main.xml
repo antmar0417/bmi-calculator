@@ -1,35 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="24dp">
+    android:fadeScrollbars="true"
+    android:scrollbars="vertical">
 
-    <TextView
-        android:id="@+id/text_view_restaurant_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:fontFamily="serif-monospace"
-        android:text="@string/app_name" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/text_view_starters"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/text_view_restaurant_name"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="60dp"
-        android:text="Starters" />
+        <androidx.cardview.widget.CardView
+            android:layout_width="290dp"
+            android:layout_height="170dp"
+            android:layout_marginTop="24dp"
+            app:cardCornerRadius="8dp">
 
-    <TextView
-        android:id="@+id/text_view_mains"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/text_view_starters"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="60dp"
-        android:text="Main Course" />
+            <ImageView
+                android:id="@+id/roundedImageView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:scaleType="centerCrop"
+                android:src="@drawable/weight_loss_image" />
+        </androidx.cardview.widget.CardView>
 
-</RelativeLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="24dp"
+            android:text="BMI Calculator" />
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/radio_button_male"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Male" />
+
+            <RadioButton
+                android:id="@+id/radio_button_female"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Female" />
+        </RadioGroup>
+
+        <EditText
+            android:id="@+id/edit_text_age"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:hint="Age"
+            android:inputType="number" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/edit_text_feet"
+                android:layout_width="75dp"
+                android:layout_height="wrap_content"
+                android:hint="Meter"
+                android:inputType="number"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/edit_text_inches"
+                android:layout_width="75dp"
+                android:layout_height="wrap_content"
+                android:hint="Cm"
+                android:inputType="number"
+                android:textAlignment="center" />
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/edit_text_weight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:hint="Weight(kg)"
+            android:inputType="number" />
+
+        <Button
+            android:id="@+id/button_calculate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:text="Calculate"
+            android:textColor="@android:color/white"
+            app:backgroundTint="@android:color/holo_blue_bright" />
+        <!--                android:theme="@style/CardView.Dark"-->
+
+        <TextView
+            android:id="@+id/text_view_result"
+            android:layout_width="290dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/border_radius"
+            android:minHeight="100dp"
+            android:padding="10dp"
+            android:text="Result..." />
+    </LinearLayout>
+</ScrollView>
