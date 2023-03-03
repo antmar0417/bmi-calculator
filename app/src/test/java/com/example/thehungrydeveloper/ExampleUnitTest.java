@@ -1,4 +1,4 @@
-package com.example.andriodtestapp;
+package com.example.thehungrydeveloper;
 
 import org.junit.Test;
 
